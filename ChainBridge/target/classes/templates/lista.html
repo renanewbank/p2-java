@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Editar</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a>Sobre</a>
+                </li>
+                <li>
+                    <a>Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a>Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/form}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="container-lista">
+            <div class="list-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>CNPJ</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody th:each="emp: ${empresas}">
+                        <tr>
+                            <td th:text="${emp.id}"></td>
+                            <td th:text="${emp.cnpj}"></td>
+                            <td th:text="${emp.nome}"></td>
+                            <td th:text="${emp.email}"></td>
+                            <td th:text="${emp.telefone}"></td>
+                            <td th:text="${emp.endereco}"></td>
+                            <td><a th:href="@{'editar/' + ${emp.id}}">Editar</a></td>
+                            <td>
+                                <form th:action="@{'deletar/' + ${emp.id}}" method="post">
+                                    <input type="submit" value="Apagar">
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>    
+        </div>
+        
+    </section>
+        
+</body>
+</html>
