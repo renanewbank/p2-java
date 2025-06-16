@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Criar Conta</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a th:href="@{/contratos}">Contratos</a>
+                </li>
+                <li>
+                    <a th:href="@{/planos}">Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a th:href="@{/listar}">Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/create}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section> 
+        <div class="container-create">
+            <div class="container-formulario">
+                <h2>Atualizar Informações</h2>
+                <form th:action="@{/editar/{id}(id=${empresas.id})}" method="post" th:object="${empresas}">
+                    
+                    CNPJ <input type="text" th:field="*{cnpj}"><br>
+                    Nome <input type="text" th:field="*{nome}"><br>
+                    Email <input type="text" th:field="*{email}"><br>
+                    <input type="submit" value="Salvar Alterações">
+                </form>        
+            </div>            
+        </div>        
+    </section>
+</body>
+</html>

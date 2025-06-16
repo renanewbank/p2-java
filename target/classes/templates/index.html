@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>ChainBridge Pay</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a th:href="@{/contratos}">Contratos</a>
+                </li>
+                <li>
+                    <a th:href="@{/planos}">Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a th:href="@{/listar}">Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/form}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section> 
+        <div class="container-1">
+
+            <div class="column col-1">
+                <h1>Pagamentos B2B com Criptomoedas Simples e Seguros</h1>
+                <p>Receba e envie pagamentos entre empresas de forma instantânea, global e com taxas reduzidas — tudo com segurança blockchain.</p>
+                
+                <div class="buttons">
+                    <a class="cta-button-1">Comece agora</a>
+                    <a class="cta-button-2">Saber mais</a>
+                </div>
+            </div>
+
+            <div class="column">
+                <img th:src="@{img/payment-illustration.png}" width="540" height="409">
+            </div>
+        </div>        
+    </section>    
+    
+</body>
+</html>

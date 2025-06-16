@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Conta</title>
+    <style>
+
+    select option {
+        color: gray;
+    }
+
+    select option.selected {
+        color: black;
+        font-weight: bold;
+        background-color: #d0f0c0; /* verde claro como destaque */
+    }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a th:href="@{/contratos}">Contratos</a>
+                </li>
+                <li>
+                    <a th:href="@{/planos}">Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a th:href="@{/listar}">Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/form}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section> 
+    <div class="container-create">
+        <div class="container-formulario">
+            <h2 th:text="${nomePag}"></h2>
+            <form th:action="@{${link}}" method="post" th:object="${empresas}">
+                <label for="cnpj">CNPJ da Empresa</label> 
+                <input type="text" th:field="*{cdCnpj}" id="cnpj" placeholder="00.000.000.0000-00" maxlength="14" required><br>
+                Nome <input type="text" th:field="*{nmEmpresa}" placeholder="Empresa" size="100" required><br>
+                Email <input type="email" th:field="*{dsEmail}" placeholder="email@empresa.com" size="100" required><br>
+                
+                <div class="container-planos">
+                    <label for="planos">Plano</label>
+                    <select id="planos" name="plano" required>
+                        <option value="1">Plano Básico</option>
+                        <option value="2">Plano Profissional</option>
+                        <option value="3">Plano Corporativo</option>
+                    </select>
+                </div>
+                <input type="submit" th:value="${valorBtn}">
+            </form>        
+        </div>            
+    </div>        
+</section>  
+</body>
+</html>
+
+<!-- <script>
+    const selectPlano = document.getElementById('planos');
+
+    function updateSelectedOption() {
+        const options = selectPlano.options;
+        for (let i = 0; i < options.length; i++) {
+            options[i].classList.remove('selected');
+        }
+        const selectedIndex = selectPlano.selectedIndex;
+        if (selectedIndex >= 0) {
+            options[selectedIndex].classList.add('selected');
+        }
+    }
+
+    // Atualiza ao carregar a página e quando muda a seleção
+    selectPlano.addEventListener('change', updateSelectedOption);
+    window.addEventListener('DOMContentLoaded', updateSelectedOption);
+
+ 
+</script> -->

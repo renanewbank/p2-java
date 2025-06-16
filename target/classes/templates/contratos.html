@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Editar</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a th:href="@{/contratos}">Contratos</a>
+                </li>
+                <li>
+                    <a th:href="@{/planos}">Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a th:href="@{/listar}">Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/form}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div>
+        <h2>Contratos</h2>
+
+     
+        <div class="container-contrato">
+            <p>Buscar Contratos por CNPJ</p>
+            <form class="search-form" th:action=@{/contratos} method="get" th:object=${contratos}>
+                <div>
+                    <label for="cnpj">CNPJ da Empresa</label>
+                    <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" required>
+                </div>
+                <button type="submit" value="Consultar">Consultar</button>
+            </form>
+            <p class="aviso">Digite o CNPJ da empresa para visualizar todos os contratos associados</p>
+        </div>
+
+       
+        
+        <h3>Lista de Contratos</h3>
+            
+        <!-- <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>CNPJ</th>                       
+                        <th>Plano</th>
+                        <th>Data de Início</th>
+                        <th>Data de Vencimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="contratos : ${contratos}">
+                        <td th:text="${cont.cdCnpj}"></td>                
+                        <td th:text="${cont.cdPlano}"></td>
+                        <td th:text="${cont.dtInicio}"></td>
+                        <td th:text="${cont.dtVencimento}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> -->
+        
+    </div>
+
+    <script>
+        // Máscara para CNPJ
+        document.getElementById('cnpj').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+            value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            value = value.replace(/(\d{4})(\d)/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Validação do formulário
+        document.querySelector('.search-form').addEventListener('submit', function(e) {
+            const cnpj = document.getElementById('cnpj').value;
+
+            if (!cnpj || cnpj.length < 18) {
+                e.preventDefault();
+                alert('Por favor, informe um CNPJ válido.');
+            }
+        });
+    </script>
+</body>
+</html>

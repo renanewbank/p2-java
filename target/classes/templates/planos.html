@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Editar</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-group-1">
+                <li>
+                    <a th:href="@{/contratos}">Contratos</a>
+                </li>
+                <li>
+                    <a th:href="@{/planos}">Planos</a>
+                </li>
+            </ul>
+
+            <div>
+                <a th:href="@{/}">
+                    <img th:src="@{/img/cb-logo.png}" width="166" height="33">
+                </a>
+            </div>
+
+            <ul class="nav-group-2">
+                <li>
+                    <a th:href="@{/listar}">Clientes</a>
+                </li>
+                <li>
+                    <a th:href="@{/form}">Criar Conta</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Planos</h2>
+        
+        <div class="container-create">
+            <div class="card-plano">
+                <h3>Plano Básico</h3>
+                <p>Ideal para pequenas empresas.</p>
+                <p>R$99,90</p>
+            </div>
+            <div class="card-plano">
+                <h3>Plano Profissional</h3>
+                <p>Para empresas em crescimento.</p>
+                <p>R$199,90</p>
+            </div>
+            <div class="card-plano">
+                <h3>Plano Corporativo</h3>
+                <p>Recursos avançados e suporte dedicado.</p>
+                <p>R$499,90</p>
+            </div>
+
+       </div>
+    </section>
+        
+</body>
+</html>
